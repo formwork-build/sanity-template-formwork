@@ -21,7 +21,7 @@ A bare-bones starter for getting up and running with a Next JS front-end and a S
 3. Click Code > Open in Github Desktop
 4. Open up the local repo in VS Code and run `vercel link` to link the project back to Vercel.
 5. Run `vercel env pull .env` to grab your env files. Keep it tidy and remove the empty system variables.
-6. Open sanity.config.js and paste in the `projectId` & `vercelUrl`
+6. Open sanity.config.js and paste in the `projectId` & `vercelUrl`. Rename the title in the config.
 
 ### Next
 1. Run `yarn && yarn dev` from the root.
@@ -33,8 +33,8 @@ A bare-bones starter for getting up and running with a Next JS front-end and a S
 
 ### Final settings
 1. In the sanity directory run `sanity dataset import production.tar.gz production` to import dummy content.
-2. Go in to your Sanity Studio and remove any dummy content you don't need.
-3. Deploy your Sanity studio by running `sanity deploy` in the sanity directory.
+2. Deploy your Sanity studio by running `sanity deploy` in the sanity directory.
+3. Go in to your Sanity Studio and remove any dummy content you don't need.
 
 You're ready to go 🚍
 
