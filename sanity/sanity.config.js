@@ -6,7 +6,7 @@ import { structure } from './deskStructure'
 import defaultDocumentNode from './defaultDocumentNode'
 import { noteField } from 'sanity-plugin-note-field'
 
-export const projectId = 'pqrto1u3'
+export const projectId = '20y199p2'
 export const dataset = 'production'
 export const vercelUrl = 'https://formwork-next.vercel.app'
 
