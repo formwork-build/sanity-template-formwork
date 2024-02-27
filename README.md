@@ -17,19 +17,19 @@ A bare-bones starter for getting up and running with a Next JS front-end and a S
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fformwork-build%2Fsanity-template-formwork&integration-ids=oac_hb2LITYajhRQ0i4QznmKH7gx)
 
 ### Local setup
-1. Once your site has successfully deployed, Within the Vercel add one extra env variable: `SANITY_STUDIO_PREVIEW_URL="https://your-project.vercel.app/"`
-2. Open your new Git repo in Github.
+1. Once your site has successfully deployed, within the Vercel settings add one extra env variable: `SANITY_STUDIO_PREVIEW_URL="https://your-project.vercel.app/"`
 3. Click Code > Open in Github Desktop
-4. Open up the local Repo in VS Code and run `vercel link` to link the project back to Vercel.
+4. Open up the local repo in VS Code and run `vercel link` to link the project back to Vercel.
 5. Run `vercel env pull .env` to grab your env files. Keep it tidy and remove the empty system variables.
 6. Open sanity.config.js and paste in the `projectId` & `vercelUrl`
 
 ### Next
-1. Run `yarn` from the root.
-2. Run `yarn dev`, you should now be up and running.
+1. Run `yarn && yarn dev` from the root.
+2. You should now be up and running.
 
-### On-demand Revalidation
-1. To set up On-demand Revalidation run `sanity manage` from the studio directory. Go to API and add a webhoook. Call it Revalidation. The URl should be https://your-project.vercel.app/api/revalidate. We no longer need to use a secret for this file.
+### Sanity
+1. Run `yarn && yarn dev` from the sanity directory.
+1. To set up On-demand Revalidation run `sanity manage` from the sanity directory. Go to API and add a webhoook. Call it Revalidation. The URl should be https://your-project.vercel.app/api/revalidate. We no longer need to use a secret for this file.
 
 ### Final settings
 1. In the sanity directory run `sanity dataset import production.tar.gz production` to import dummy content.
