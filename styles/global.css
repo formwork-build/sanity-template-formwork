@@ -1,0 +1,54 @@
+@tailwind base;
+@layer base {
+	/* add some custom resets */
+	* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+		/*  This prevents chrome from annoyingly adjusting the scroll to try and compensate for moving elements */
+		overflow-anchor: none;
+  }
+
+  button{
+    -webkit-appearance: none;
+    border: none;
+    background: none;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+  }
+
+	input, select {
+		border-radius: 0;
+		-webkit-appearance: none;
+	}
+
+	input, select {
+		border-radius: 0;
+		-webkit-appearance: none;
+	}
+
+  input:-webkit-autofill,
+	input:-webkit-autofill:hover, 
+	input:-webkit-autofill:focus,
+	textarea:-webkit-autofill,
+	textarea:-webkit-autofill:hover,
+	textarea:-webkit-autofill:focus,
+	select:-webkit-autofill,
+	select:-webkit-autofill:hover,
+	select:-webkit-autofill:focus {
+		border: none;
+		-webkit-text-fill-color: inherit;
+		-webkit-box-shadow: 0 0 0px 0px transparent inset;
+		transition: background-color 5000000s ease-in-out 0s;
+	}
+
+	/* Prevent safari blue links */
+	button, option {
+    color: inherit;
+  }
+}
+@tailwind components;
+@tailwind utilities;
