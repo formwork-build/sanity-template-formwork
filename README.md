@@ -6,8 +6,8 @@ A bare-bones starter for getting up and running with a Next JS front-end and a S
 
 1. Click Code > Open with Github Desktop.
 2. Once you've downloaded the repo, open it up in VS Code.
-3. You should see two terminal screens start up (assuming you have [Restore Terminals](https://marketplace.visualstudio.com/items?itemName=EthanSK.restore-terminals) installed). They will both fail, so you can ctrl+c on both.
-4. In the Next directory run `vercel env pull .env` to grab your environment variables.
+3. You should see two terminal screens start up (assuming you have [Restore Terminals](https://marketplace.visualstudio.com/items?itemName=EthanSK.restore-terminals) installed). They will both fail.
+4. In the Next directory run `vercel link && vercel env pull .env` to grab your environment variables.
 5. In your root directory window run `yarn && yarn dev`.
 6. In your sanity directory window run `yarn && yarn dev`.
 7. You should now have the project up and running.
@@ -29,7 +29,8 @@ A bare-bones starter for getting up and running with a Next JS front-end and a S
 
 ### Sanity
 1. Run `yarn && yarn dev` from the sanity directory.
-1. To set up On-demand Revalidation run `sanity manage` from the sanity directory. Go to API and add a webhoook. Call it Revalidation. The URl should be https://your-project.vercel.app/api/revalidate. We no longer need to use a secret for this file.
+2. To set up On-demand Revalidation run `sanity manage` from the sanity directory. Go to API and add a webhoook. Call it Revalidation. The URl should be https://your-project.vercel.app/api/revalidate. We no longer need to use a secret for this file.
+3. Next go to API > CORS Origins and add an origin for https://your-project.vercel.app/ to allow preview to work. Allow credentials.
 
 ### Final settings
 1. In the sanity directory run `sanity dataset import production.tar.gz production` to import dummy content.
