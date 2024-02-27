@@ -35,6 +35,7 @@ A bare-bones starter for getting up and running with a Next JS front-end and a S
 1. In the sanity directory run `sanity dataset import production.tar.gz production` to import dummy content.
 2. Deploy your Sanity studio by running `sanity deploy` in the sanity directory.
 3. Go in to your Sanity Studio and remove any dummy content you don't need.
+4. Commit your changes.
 
 You're ready to go 🚍
 
