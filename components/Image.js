@@ -40,7 +40,7 @@ const Image = ({ asset, sizes, quality = 50, aspectRatio, cover, contain, priori
 
 Image.propTypes = {
 	asset: PropTypes.object,
-	sizes: PropTypes.string,
+	sizes: PropTypes.string.isRequired,
 	quality: PropTypes.number,
 	aspectRatio: PropTypes.number,
 	cover: PropTypes.bool,
