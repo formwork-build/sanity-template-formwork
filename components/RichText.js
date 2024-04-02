@@ -16,6 +16,14 @@ const components = () => ({
 			)
 		},
 	},
+	list: {
+		bullet: props => <ul className='my-5 list-disc list-inside'>{props?.children}</ul>,
+		number: props => <ol className='my-5 list-decimal list-inside'>{props?.children}</ol>,
+	},
+	listItem: {
+		bullet: ({children}) => <li>{children}</li>,
+		number: ({children}) => <li>{children}</li>,
+	},
 })
 
 const RichText = ({ content }) => {
