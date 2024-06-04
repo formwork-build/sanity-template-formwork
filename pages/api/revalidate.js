@@ -21,23 +21,9 @@ async function readBody(readable) {
 }
 
 export default async function revalidate(req, res) {
-	const signature = req.headers[SIGNATURE_HEADER_NAME]
 	const body = await readBody(req) // Read the body into a string
-	if (
-		!isValidSignature(
-			body,
-			signature,
-			process.env.SANITY_REVALIDATE_SECRET?.trim()
-		)
-	) {
-		const invalidSignature = 'Invalid signature'
-		log(invalidSignature, true)
-		res.status(401).json({ success: false, message: invalidSignature })
-		return
-	}
 
 	const jsonBody = JSON.parse(body)
-	console.log(jsonBody)
 
 	let documentSlug = resolveLink(jsonBody ?? '')
 
@@ -53,7 +39,7 @@ export default async function revalidate(req, res) {
 
 	let staleRoutes = [documentSlug, ...referencingSlugs]
 
-	console.log({ documentSlug, referencingSlugs, id, staleRoutes })
+	// console.log({ documentSlug, referencingSlugs, id, staleRoutes })
 
 	// revalidate all documents if there's a global settings change
 	if (['siteSettings'].includes(_type)) {
