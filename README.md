@@ -33,7 +33,8 @@ A bare-bones starter for getting up and running with a Next JS front-end and a S
 
 1. Run `yarn && yarn dev` from the sanity directory.
 2. To set up On-demand Revalidation run `sanity manage` from the sanity directory. Go to API and add a webhoook. Call it Revalidation. The URl should be https://your-project.vercel.app/api/revalidate. Make sure to select trigger on: 'create', 'update' & 'delete'. We no longer need to use a secret for this file.
-3. Next go to API > CORS Origins and add an origin for https://your-project.vercel.app/ to allow preview to work. Allow credentials.
+3. You also need to set up a webhook that fires on Create and Delete. To do this, go in to your Vercel project and go to Settings > Git > Deploy Hooks > Create Hook. Call it Create / Delete and the branch should be main. Copy the hook and go back to the Sanity Webshooks area and create a new webhook. Call it Create / Delete and paste in the url. This should only trigger on Create and Delete, not on Update. Enable webook and Save.
+4. Next go to API > CORS Origins and add an origin for https://your-project.vercel.app/ to allow preview to work. Allow credentials.
 
 ### Final settings
 
