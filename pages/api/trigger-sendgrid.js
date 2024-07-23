@@ -9,7 +9,7 @@ export default async function handler(req, res){
 	let data
 
 	try {
-		data = req.body
+		data = JSON.parse(req.body)
 	} catch (error) {
 		console.log('JSON parsing error:', error)
 		return res.status(400).json({ error: 'Bad request body' })
@@ -18,8 +18,7 @@ export default async function handler(req, res){
 	try {
 		sgMail.setApiKey(process.env.NEXT_SENDGRID)
 		const msg = data
-		console.log(msg)
-	
+			
 		return sgMail
 			.send(msg)
 			.then(() => {
