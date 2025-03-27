@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import DataViewer from '@utils/DataViewer'
 import Seo from '@components/Seo'
 import SpinningNut from '@components/SpinningNut'
+import RichText from '@components/RichText'
 
 const Template = ({ data }) => {
 	const page = data?.page
@@ -13,6 +14,7 @@ const Template = ({ data }) => {
 				description={page?.seo?.metaDescription}
 				image={page?.seo?.socialImage}
 			/>
+
 			<SpinningNut />
 			<DataViewer data={data} name='data' />
 		</>

@@ -4,28 +4,30 @@ import PropTypes from 'prop-types'
 import Template from 'templates/Page'
 import PagePreview from '@components/PagePreview'
 import dynamic from 'next/dynamic'
-const PreviewProvider = dynamic(() => import('../components/PreviewProvider'), {
-	ssr: false,
-})
+const PreviewProvider = dynamic(() => import('../components/PreviewProvider'),)
 
 const Page = ({ preview, data }) => {
+	console.log('Page props:', { preview, data, slug: data?.page?.slug })
+
+	if (!preview) return <Template data={data} />
+
 	return (
-		!preview ? <Template data={data}/> :
-			<PreviewProvider>
-				<PagePreview
-					renderTemplate={liveData => <Template data={liveData} />}
-					initialData={data} 
-					query={pageQuery} 
-					slug={data?.page?.slug} 
-				/>
-			</PreviewProvider>
+		<PreviewProvider>
+			<PagePreview
+				renderTemplate={liveData => <Template data={liveData} />}
+				initialData={data}
+				query={pageQuery}
+				slug={data?.page?.slug} // Make sure this is being passed
+			/>
+		</PreviewProvider>
 	)
 }
 
-export const getStaticProps = async ({ preview = false, params }) => {
+export const getStaticProps = async (context) => {
+	const preview = context.draftMode ?? false
 	const client = getClient(preview)
-	const data = await client.fetch(pageQuery, {slug: params.slug})
-	return {props: {preview, data}}
+	const data = await client.fetch(pageQuery, { slug: context.params.slug })
+	return { props: { preview, data } }
 }
 
 export async function getStaticPaths() {

@@ -3,26 +3,41 @@ import { useLiveQuery } from 'next-sanity/preview'
 import PropTypes from 'prop-types'
 
 const PagePreview = ({ initialData, query, slug, renderTemplate }) => {
-	const [data, loading] = useLiveQuery(initialData, query, slug ? { slug } : null)
-	const [loaded, setLoaded] = useState(false)
-	const [init, setInit] = useState(false)
-	useEffect(() => {
-		setInit(true)
-		if(init && !loading){
-			setLoaded(true)
-		}
-	}, [loading])
-	return loaded ? renderTemplate(data) : <p className="md fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Loading preview...</p>
+	const params = slug ? { slug } : undefined
+	const [data, loading] = useLiveQuery(
+		initialData,
+		query,
+		params
+	)
+
+	// If we're loading but have initial data, show that
+	if (loading && initialData) {
+		return renderTemplate(initialData)
+	}
+
+	// If we have live data, show that
+	if (data) {
+		return renderTemplate(data)
+	}
+
+	// If we have initial data but no live data yet, show initial
+	if (initialData) {
+		return renderTemplate(initialData)
+	}
+
+	// Only show loading if we have nothing else to show
+	return (
+		<div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-50">
+			<p className="text-lg">Loading preview...</p>
+		</div>
+	)
 }
 
 PagePreview.propTypes = {
-	initialData: PropTypes.object,
-	query: PropTypes.string,
+	initialData: PropTypes.object.isRequired,
+	query: PropTypes.string.isRequired,
 	slug: PropTypes.string,
-	renderTemplate: PropTypes.func,
+	renderTemplate: PropTypes.func.isRequired
 }
 
 export default PagePreview
-
-
-

@@ -3,15 +3,13 @@ import { getClient } from '../../lib/sanity.server'
 import resolveLink from '../../utils/resolveLink'
 
 function redirectToPreview(res, Location) {
-	// Enable Preview Mode by setting the cookies
-	res.setPreviewData({})
+	// Enable Draft Mode by setting the cookies
+	res.setDraftMode({ enable: true })
 	// Redirect to a preview capable route
-	res.writeHead(307, { Location })
-	res.end()
+	res.redirect(307, Location)
 }
 
 export default async function preview(req, res) {
-
 	// If no slug is provided open preview mode on the frontpage
 	if (!req.query.slug) {
 		return redirectToPreview(res, '/')
@@ -29,6 +27,5 @@ export default async function preview(req, res) {
 	}
 
 	// Redirect to the path from the fetched post
-	// We don't redirect to req.query.slug as that might lead to open redirect vulnerabilities
 	redirectToPreview(res, resolveLink(doc))
 }
