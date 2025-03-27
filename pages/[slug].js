@@ -7,7 +7,6 @@ import dynamic from 'next/dynamic'
 const PreviewProvider = dynamic(() => import('../components/PreviewProvider'),)
 
 const Page = ({ preview, data }) => {
-	console.log('Page props:', { preview, data, slug: data?.page?.slug })
 
 	if (!preview) return <Template data={data} />
 

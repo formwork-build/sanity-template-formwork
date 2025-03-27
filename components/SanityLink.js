@@ -8,26 +8,25 @@ const SanityLink = ({ className, link, children, delay, href }) => {
 
 	const handleClick = (e, url) => {
 		e.preventDefault()
-		console.log(e)
 		setTimeout(() => {
 			router.push(url)
 		}, delay)
 	}
 
-	if((link?.linkType === 'internal' && link?.document) || href){
+	if ((link?.linkType === 'internal' && link?.document) || href) {
 		const resolvedUrl = resolveLink(link?.document ?? '')
 		return (
 			<Link href={href ?? resolvedUrl} onClick={e => delay ? handleClick(e, href ?? resolvedUrl) : null} className={className}>
 				{children}
 			</Link>
 		)
-	} else if(link?.linkType === 'file'){
+	} else if (link?.linkType === 'file') {
 		return (
 			<a href={link?.file?.asset?.url} target={'_blank'} rel='noreferrer' className={className}>
 				{children}
 			</a>
 		)
-	} else if (link?.url){
+	} else if (link?.url) {
 		return (
 			<a href={link?.url} target={link?.blank ? '_blank' : '_self'} rel='noreferrer' className={className}>
 				{children}
